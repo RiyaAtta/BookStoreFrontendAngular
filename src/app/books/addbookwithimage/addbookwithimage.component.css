@@ -1,0 +1,11 @@
+.row{
+    padding-left: 300px;
+    font-size: larger;
+    font-weight: 800;
+    font-family: 'Times New Roman', Times, serif;
+}
+.btn{
+    margin-top: 20px;
+    margin-left: 200px;
+    align-content: center;
+}

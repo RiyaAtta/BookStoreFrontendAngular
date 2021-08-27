@@ -1,0 +1,60 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<app-adminheader></app-adminheader>
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <h3 style="text-align: center;color:blue;">Customer Profiles</h3>
+            <!-- end col -->
+        </div>
+        <!-- end row -->
+        <div class="row">
+            <div class="col-lg-4" *ngFor="let cust of customers">
+                <div class="text-center card-box">
+                    <div class="member-card pt-2 pb-2">
+                        <div class="thumb-lg member-thumb mx-auto"><img
+                                src="https://cdn1.vectorstock.com/i/thumb-large/82/55/anonymous-user-circle-icon-vector-18958255.jpg"
+                                class="rounded-circle img-thumbnail" alt="profile-image"></div>
+                        <div class="">
+                            <h4>{{cust.fullName}}</h4>
+                            <p class="text-muted">Contact number:<span>| </span><a href="#"
+                                    class="text-pink">{{cust.mobileNumber}}</a></p>
+                        </div>
+                        <div class="">
+                            <p class="text-muted"><span class="material-icons">email</span><span>| </span><a href="#"
+                                    class="text-pink">{{cust.email}}</a></p>
+                        </div>
+                        <button type="button" class="btn btn-primary mt-3 btn-rounded waves-effect w-md waves-light"> <a style="color:cornsilk;text-decoration:none;"
+                                href="mailto:{{cust.email}}?subject = Feedback&body = Message">Message Now
+                            </a></button>
+                        <div class="mt-4">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="mt-3">
+                                        <h4>{{cust.address.country}}</h4>
+                                        <p class="mb-0 text-muted">Country</p>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="mt-3">
+                                        <h4>{{cust.address.city}}</h4>
+                                        <p class="mb-0 text-muted">City</p>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="mt-3">
+                                        <h4>{{cust.address.address}}</h4>
+                                        <p class="mb-0 text-muted">Address</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+<!-- container -->

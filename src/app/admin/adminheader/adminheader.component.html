@@ -1,0 +1,43 @@
+<div id="mySidenav" class="sidenav">
+    <div>
+        <h3 style="text-align: center; color: white;">
+            Admin Panel
+        </h3>
+    </div>
+    <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+    <div class="centericon my-4">
+        <a class="btn btn-dark" routerLink="/admin/home"><i class="fa fa-home"> <span class="notbold mx-2">
+                    Home</span></i></a>
+    </div>
+    <div class="centericon my-4">
+        <a class="btn btn-dark" routerLink="/customer/viewallcustomer"><i class="fa fa-eye"><span
+                    class="notbold mx-2">Profiles</span></i></a>
+    </div>
+    <div class="centericon my-4">
+        <a class="btn btn-dark" routerLink="/customer/updatecustomer"><i class="fa fa-user"><span
+                    class="notbold mx-2">Update User</span></i></a>
+    </div>
+    <div class="centericon my-4">
+        <a class="btn btn-dark" routerLink="/admin/updateorder"><i class="fa fa-shopping-cart"><span
+                    class="notbold mx-2">Orders</span></i></a>
+    </div>
+    <div class="centericon my-4">
+        <a class="btn btn-dark" routerLink="/review"><i class="fa fa-pencil"><span
+                    class="notbold mx-2">Reviews</span></i></a>
+    </div>
+    <div class="centericon my-4">
+        <a class="btn btn-dark" routerLink="/books"><i class="fa fa-book"><span class="notbold mx-2">Add
+                    Book</span></i></a>
+    </div>
+    <div class="centericon my-4">
+        <a class="btn btn-dark" (click)="logout()"><i class="fa fa-sign-out"><span class="notbold mx-2">Log
+                    Out</span></i></a>
+    </div>
+</div>
+
+
+
+<div id="main">
+    <span style="font-size:30px;cursor:pointer" (click)="openNav()">&#9776; <img src="assets/Images/bookLogo1.webp"
+            alt="" width="80" height="80"></span>
+</div>

@@ -1,0 +1,120 @@
+
+
+<div class="container bootstrap snippets bootdey ">
+    <div class="col-md-9 col-sm-8 content">
+        <div class="row">
+            <div class="col-md-12" >
+                <div class="panel panel-info panel-shadow">
+                    <div class="panel-heading">
+                        <h3>
+                            <img  width="100" height="100"  class="img-circle img-thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSs7kc4LWYMTgCvPRNPCDK99Vf0O1vggwWsgA&usqp=CAU">
+                            {{customername}}
+                        </h3>
+                    </div>
+                    <div class="panel-body"> 
+                        <div class="table-responsive">
+                        <table class="table" >
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th>Book Title</th>
+                                <th>Qty</th>
+                                <th>Price</th>
+                                <th>SubTotal</th>
+                                <th>Remove</th>
+                                
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr  *ngFor="let each of bookdtos">
+                                    <td> </td>
+                                    <td><strong>{{each.book.title}}</strong></td>
+                                    <td>
+                                    <form class="form-inline">
+                                        <input class="form-control" type="text" value="{{each.quantity}}" name="quan" >
+                                        <button rel="tooltip"  class="btn btn-default"><i class="fa fa-pencil"></i></button>
+                                    </form>
+                                    </td>
+                                    <td><strong>&#8377;{{each.book.price}}</strong></td>
+                                    <td><strong>&#8377;{{each.book.price*each.quantity}}</strong></td>
+                                    <td>
+                                        <button (click)="removeItem(each.book)" class="btn btn-primary"><i class="fa fa-trash-o"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" class="text-right"><strong>Total</strong></td>
+                                    <td><strong>&#8377;{{total}}</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                </div>
+                <a routerLink="/books/bookdisplay" class="btn btn-success my-2"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Continue Shopping</a>
+                <button class="btn btn-success  pull-right my-2" (click)="onClickUpdate()" data-bs-toggle="modal"
+                data-bs-target="#updateModal">Place Order</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" id="updateModal" data-backdrop="static" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Enter Payment Details</h5>
+                <button type="button" class="close" #closebutton data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form class="form-sm" [formGroup]="userUpdateForm" (ngSubmit)="onSubmit()">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="RecipentName">Recipent Name</label>
+                        <input type="text" class="form-control" id="RecipentName" formControlName="RecipentName">
+                        <div class="alert alert-danger" *ngIf="userUpdateForm.get('RecipentName').invalid 
+                            && userUpdateForm.get('RecipentName').touched">
+                            <div *ngIf="userUpdateForm.get('RecipentName').errors.required">
+                                RecipentName is required.
+                            </div>
+                            <div *ngIf="userUpdateForm.get('RecipentName').errors.minlength">
+                                RecipentName must be at least 5 characters long.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Phone Number">Phone Number</label>
+                        <input type="text" class="form-control" id="PhoneNumber" formControlName="PhoneNumber">
+                        <div class="alert alert-danger" *ngIf="userUpdateForm.get('PhoneNumber').invalid 
+                            && userUpdateForm.get('PhoneNumber').touched">
+                            <div *ngIf="userUpdateForm.get('PhoneNumber').errors.required">
+                                PhoneNumber is required.
+                            </div>
+                            <div *ngIf="userUpdateForm.get('PhoneNumber').errors.minlength">
+                                PhoneNumber must be 10 digits
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Address">Address</label>
+                        <input type="text" class="form-control" id="Address" formControlName="Address">
+                        <div class="alert alert-danger" *ngIf="userUpdateForm.get('Address').invalid 
+                            && userUpdateForm.get('Address').touched">
+                            <div *ngIf="userUpdateForm.get('Address').errors.required">
+                                Address is required.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Enter Details</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+            <a href="/payment" style="text-decoration: none;">Proceed to Payment</a>
+        </div>
+    </div>
+</div>
+

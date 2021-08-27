@@ -1,0 +1,54 @@
+ <!-- Nav bar module -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" routerLink="/home">
+                <img src="assets/Images/bookLogo1.webp" alt="" width="50" height="50" class="d-inline-block align-text-top">
+                <a class="navbar-brand" routerLink="/home">bookLodeon</a>
+            </a>
+            </div>
+    </nav>
+    <div class="content">
+      <video id="video" style="width:100%; height:100%" autoplay [muted]="'muted'" loop>
+          <source src="assets/Images/introvideo.mp4" type="video/mp4">
+        </video>
+        <div class="overlay">
+   <!-- Customer Login Module -->
+    <div class="login">
+        <h2 class="active"> Customer Login</h2>
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" formControlName="email">
+                    <div class="alert alert-danger" *ngIf="userForm.get('email').invalid 
+                                    && userForm.get('email').touched">
+                      <div *ngIf="userForm.get('email').errors.required">
+                        email is required.
+                      </div>
+                      <div *ngIf="userForm.get('email').errors.pattern" class="text-danger">
+                        Please provide a valid email address
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="current-password">Password</label>
+                    <input type="password" class="form-control" id="password" formControlName="password">
+                    <div class="alert alert-danger" *ngIf="userForm.get('password').invalid 
+                                    && userForm.get('password').touched">
+                      <div *ngIf="userForm.get('password').errors.required">
+                        Password required
+                      </div>
+                      <div *ngIf="userForm.get('password').errors.pattern" class="text-danger">
+                        Password invalid
+                      </div>
+                    </div>
+                  </div>
+
+            <button type="submit" class="signin" name="login">Login</button><br>
+            <a  style="text-decoration: none;color: whitesmoke;" routerLink='/customer'><i>Do not have an account? </i>Register</a>
+            <br><br>
+</div>
+        </form>
+    </div>
+</div>
+</div>

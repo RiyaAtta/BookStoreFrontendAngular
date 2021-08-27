@@ -1,0 +1,25 @@
+<head>
+    ...
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+</head>
+                <div class="bg-white rounded shadow-sm p-4 mb-4 restaurant-detailed-ratings-and-reviews">
+                    <h5 class="mb-1">All Ratings and Reviews</h5>
+                    <div class="reviews-members pt-4 pb-4">
+                        <div class="media">
+                             <div class="media-body" *ngFor="let each of review">
+                                <a href="#"><img alt="Generic placeholder image" src="https://cdn1.vectorstock.com/i/thumb-large/82/55/anonymous-user-circle-icon-vector-18958255.jpg" class="mr-3 rounded-pill"></a>
+                                <div class="reviews-members-header">
+                                    <ngb-rating [max]="5" [(rate)]="each.ratings" [readonly]="true"></ngb-rating>
+                                    <h6 class="mb-1">{{each.fullName}}</h6>
+                                    <p class="text-gray">{{each.reviewOn}}</p>
+                                </div>
+                                <div class="reviews-members-body">
+                                    <p><Strong>{{each.headLine}}</Strong></p>
+                                    <p>{{each.comments}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <a class="text-center w-100 d-block mt-4 font-weight-bold" routerLink="/books/bookdisplay">Check out all other books!</a>
+                </div>

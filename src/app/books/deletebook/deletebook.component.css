@@ -1,0 +1,24 @@
+.row{
+    padding-left: 50px;
+}
+.btn{
+    margin-top: 10px;
+}
+.content { position:relative; }
+.content video {
+    position:relative;
+    z-index:0;
+}
+.overlay {
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:1;
+}
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+  }

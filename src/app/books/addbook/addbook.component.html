@@ -1,0 +1,94 @@
+
+    <div class="row">
+        <div class="col-sm-6, col-md-6">
+        <h2>Add Book Details</h2>
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="title"
+                  formControlName="title">       
+                <div class="alert alert-danger" *ngIf="userForm.get('title').invalid 
+                  && userForm.get('title').touched">
+                  <div *ngIf="userForm.get('title').errors.required">
+                    Title is required.
+                  </div>
+                  <div *ngIf="userForm.get('title').errors.minlength">
+                    Title must be at least 5 characters long.
+                  </div>
+                </div>                      
+              </div>
+              <div class="form-group">
+                <label for="author">Author</label>
+                <input type="text" class="form-control" id="author"
+                  formControlName="author">       
+                <div class="alert alert-danger" *ngIf="userForm.get('author').invalid 
+                  && userForm.get('author').touched">
+                  <div *ngIf="userForm.get('author').errors.required">
+                    author is required.
+                  </div>
+                </div>                      
+              </div>
+              <div class="form-group">
+                <label for="description">Price</label>
+                <input type="text" class="form-control" id="price"
+                  formControlName="price">       
+                <div class="alert alert-danger" *ngIf="userForm.get('price').invalid 
+                  && userForm.get('price').touched">
+                  <div *ngIf="userForm.get('price').errors.required">
+                    price is required.
+                  </div>
+                </div>                      
+              </div>
+              <div class="form-group">
+                <label for="description">Category</label>
+                <input type="text" class="form-control" id="categoryName"
+                  formControlName="categoryName">       
+                <div class="alert alert-danger" *ngIf="userForm.get('categoryName').invalid 
+                  && userForm.get('categoryName').touched">
+                  <div *ngIf="userForm.get('categoryName').errors.required">
+                    Category is required.
+                  </div>
+                </div>                      
+              </div>
+              <div class="form-group">
+                <label for="description">ISBN</label>
+                <input type="text" class="form-control" id="isbn"
+                  formControlName="isbn">       
+                <div class="alert alert-danger" *ngIf="userForm.get('isbn').invalid 
+                  && userForm.get('isbn').touched">
+                  <div *ngIf="userForm.get('isbn').errors.required">
+                    ISBN is required.
+                  </div>
+                </div>                      
+              </div>
+              <div class="form-group">
+                <label for="description">Description</label>
+                <textarea rows="5" cols="7"  class="form-control" id="description"
+                  formControlName="description"></textarea>      
+                <div class="alert alert-danger" *ngIf="userForm.get('description').invalid 
+                  && userForm.get('description').touched">
+                  <div *ngIf="userForm.get('description').errors.required">
+                    description is required.
+                  </div>
+                  <div *ngIf="userForm.get('description').errors.minlength">
+                    description must be at least 3 characters long.
+                  </div>
+                </div>                      
+              </div>
+              <div class="form-group">
+                <label for="publishDate">Publish Date</label>
+                <input type="date" class="form-control" id="publishDate"
+                formControlName="publishDate">                        
+              </div>
+              <button type="submit" [disabled]="userForm.invalid" class="btn btn-success">Submit</button>
+            </form>
+            <div class="row"> 
+              <div class="col-sm-6, col-md-6">
+                <div class="alert alert-info" *ngIf=isAdded>
+                  <p>Book Added SuccessFully!</p>
+                  <button class="btn btn-primary" (click)="resetUserForm()">Add another book</button>
+                </div>
+              </div>  
+            </div>
+        </div>
+    </div>

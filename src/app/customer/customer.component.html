@@ -1,0 +1,112 @@
+ <!-- Nav bar module -->
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+      <a class="navbar-brand" routerLink="/home">
+          <img src="assets/Images/bookLogo1.webp" alt="" width="50" height="50" class="d-inline-block align-text-top">
+          <a class="navbar-brand" routerLink="/home">bookLodeon</a>
+      </a>
+      </div>
+</nav>
+<div class="register-photo">
+  <h2>Register Now, It's Free!</h2>
+  <div class="form-container">
+    <div class="image-holder"></div>
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()" style="clear: right">
+      <div class="form-group col-xs-2" style="clear: right;">
+        <label for="fullName">Full Name</label>
+        <input type="text" class="form-control" id="fullName" formControlName="fullName">
+        <div class="alert alert-danger" *ngIf="userForm.get('fullName').invalid 
+                          && userForm.get('fullName').touched">
+          <div *ngIf="userForm.get('fullName').errors.required">
+            Name is required.
+          </div>
+          <div *ngIf="userForm.get('fullName').errors.minlength">
+            Name must be 5 characters long
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" formControlName="email">
+        <div class="alert alert-danger" *ngIf="userForm.get('email').invalid 
+                          && userForm.get('email').touched">
+          <div *ngIf="userForm.get('email').errors.required">
+            email is required.
+          </div>
+          <div *ngIf="userForm.get('email').errors.pattern" class="text-danger">
+            Please provide a valid email address
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" formControlName="password">
+        <div class="alert alert-danger" *ngIf="userForm.get('password').invalid 
+                          && userForm.get('password').touched">
+          <div *ngIf="userForm.get('password').errors.required">
+            Password required
+          </div>
+          <div *ngIf="userForm.get('password').errors.pattern" class="text-danger">
+            Password invalid
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="mobileNumber">Mobile Number</label>
+        <input type="text" class="form-control" id="mobileNumber" formControlName="mobileNumber">
+        <div class="alert alert-danger" *ngIf="userForm.get('mobileNumber').invalid 
+                          && userForm.get('mobileNumber').touched">
+          <div *ngIf="userForm.get('mobileNumber').errors.required">
+            mobile number is required.
+          </div>
+          <div *ngIf="userForm.get('mobileNumber').errors.minlength">
+            Mobile Number must be 10 digits
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="Address">Address</label>
+        <textarea rows="5" cols="7" class="form-control" id="address" formControlName="address"></textarea>
+        <div class="alert alert-danger" *ngIf="userForm.get('address').invalid 
+                          && userForm.get('address').touched">
+          <div *ngIf="userForm.get('address').errors.required">
+            address is required.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="country">Country</label>
+        <input type="text" class="form-control" id="country" formControlName="country">
+        <div class="alert alert-danger" *ngIf="userForm.get('country').invalid 
+                          && userForm.get('country').touched">
+          <div *ngIf="userForm.get('country').errors.required">
+            country is required.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" class="form-control" id="city" formControlName="city">
+        <div class="alert alert-danger" *ngIf="userForm.get('city').invalid 
+                          && userForm.get('city').touched">
+          <div *ngIf="userForm.get('city').errors.required">
+            City is required.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="pincode">Pin code</label>
+        <input type="text" class="form-control" id="pincode" formControlName="pincode">
+        <div class="alert alert-danger" *ngIf="userForm.get('pincode').invalid 
+                          && userForm.get('pincode').touched">
+          <div *ngIf="userForm.get('pincode').errors.required">
+            Pincode is required.
+          </div>
+        </div>
+      </div>
+      <button style="margin: 10px 0 0 70px" type="submit" [disabled]="userForm.invalid"
+        class="btn btn-secondary">Submit</button>
+      <a class="already" routerLink="/login">Already have an account? Login here.</a>
+    </form>
+  </div>
+</div>

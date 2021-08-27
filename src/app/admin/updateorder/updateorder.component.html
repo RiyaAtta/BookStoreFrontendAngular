@@ -1,0 +1,87 @@
+<app-adminheader></app-adminheader>
+<h2>Order Details</h2>
+<div class="row">
+    <table class="table table-sm table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Order Id</th>
+                <th>Email</th>
+                <th>Total Price</th>
+                <th>Status</th>
+                <th>Recipient Name</th>
+                <th>Recipient Phone</th>
+                <th>Shipping Address</th>
+                <th>Order Placed</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let order of orders">
+                <td>{{order.id}}</td>
+                <td>{{order.customerEmail}}</td>
+                <td>&#8377;{{order.totalPrice}}</td>
+                <td>{{order.status}}</td>
+                <td>{{order.recipientName}}</td>
+                <td>{{order.recipientPhone}}</td>
+                <td>{{order.shippingAddress}}</td>
+                <td>{{order.dateCreated}}</td>
+                <td>
+                    <button class="btn btn-success btn-sm mx-2" (click)="onClickUpdate(order.id)" data-bs-toggle="modal"
+                        data-bs-target="#updateModal">Update</button>
+                    <button class="btn btn-danger btn-sm ml-3" (click)="onClickDelete(order.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!-- To show a modal box to update a record-->
+<div class="modal" id="updateModal" data-backdrop="static" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Update Order</h5>
+                <button type="button" class="close" #closebutton data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form class="form-sm" [formGroup]="userUpdateForm" (ngSubmit)="onSubmit()">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="id">order ID</label>
+                        <input type="text" class="form-control" id="id" formControlName="id">
+                        <label for="email">Customer Email</label>
+                        <input type="text" class="form-control" id="customerEmail" formControlName="customerEmail">
+                        <label for="totalPrice">Total Price</label>
+                        <input type="text" class="form-control" id="totalPrice" formControlName="totalPrice">
+                    </div>
+                    <div class="form-group">
+                        <label for="text">Status</label>
+                        <input type="text" class="form-control" id="status" formControlName="status">
+                        <div class="alert alert-danger" *ngIf="userUpdateForm.get('status').invalid 
+                                        && userUpdateForm.get('status').touched">
+                            <div *ngIf="userUpdateForm.get('status').errors.required">
+                                Status required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipientName">Name</label>
+                        <input type="text" class="form-control" id="recipientName" formControlName="recipientName">
+                        <label for="recipientPhone">Customer Phone</label>
+                        <input type="text" class="form-control" id="recipientPhone" formControlName="recipientPhone">
+                        <label for="shippingAddress">Address</label>
+                        <input type="text" class="form-control" id="shippingAddress" formControlName="shippingAddress">
+                    </div>
+                    <div class="form-group">
+                        <label for="dateCreated">Order Placed</label>
+                        <input type="date" class="form-control" id="dateCreated" formControlName="dateCreated">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary mx-2">Update</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
